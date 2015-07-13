@@ -1,0 +1,74 @@
+/*1 [EDEFF1, 75C0CB, 348392, 33312F, 99672F, C7A048]*/
+/*2 Primary use [F7F4F1, F3E4DF, B7ADBC, 205C7D, 2C7998, 44A6B9]*/
+/*3 [CEDFE5, 5A8976, 263750, E57461, F7BFA6, FBE3DA]*/
+/*4 [EFF5F9, D1EAF0, B1D4E1, 343732, B27B6A, E0C2B6]*/
+
+body {
+  width: 950px;
+  margin: auto;
+  font-family: sans-serif;
+  background-color: #F7F4F1;
+}
+
+nav {
+  border-bottom: 2px solid #2C7998;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0px;
+  text-align: center;
+  display: block;
+}
+
+li { 
+  display: inline;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: #205C7D;
+  font-size: 2em;
+}
+
+.social {
+  display: block;
+  margin-left: 80%;
+}
+
+#twitter {
+  background: #55acee url(./assets/TwitterLogo_white.png);
+  background-size: contain;
+}
+
+#github {
+  background: url(./assets/GitHub-Mark-64px.png);
+  background-size: contain;
+}
+
+#linkedin {
+  background: #0077b5 url(./assets/In-2CRev-41px-R.png) 3px 2px;
+  background-size: 35px 35px;
+}
+
+.follow {
+  background-color: #205C7D;
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  margin: 10px;
+  display: inline-block;
+  font-size: 0em;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}

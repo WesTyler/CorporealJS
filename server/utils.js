@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
-var adminPass = require('config');
+var adminPass = require('./config.js');
 
 var utils = module.exports = {};
 
@@ -17,10 +17,10 @@ utils.getPosts = function(cb){
  dbConnection.query("SELECT \
   p.title, u.username, p.summary, p.content \
   FROM posts p \
-  INNER JOIN users u ON c.user_id = u.id;", 
+  INNER JOIN users u ON p.user_id = u.id;", 
   function(err, results){
-   if (err) {cb(404)}
-   cb({results: results});
+    if (err) {cb(404)}
+    else {cb({results: results});}
  });
 }
 // Send back

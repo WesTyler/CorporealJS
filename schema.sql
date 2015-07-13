@@ -1,5 +1,13 @@
 USE blog;
 
+CREATE TABLE users (
+  id int(11) NOT NULL auto_increment,
+  PRIMARY KEY (id),
+  username VARCHAR(250) NOT NULL,
+  UNIQUE (username),
+  password VARCHAR(250) NOT NULL
+);
+
 CREATE TABLE posts (
   id int(11) NOT NULL auto_increment,
   PRIMARY KEY (id),
@@ -8,16 +16,9 @@ CREATE TABLE posts (
   user_id int(11) NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
   summary VARCHAR(250), 
-  content TEXT,
+  content TEXT
 );
 
-CREATE TABLE users (
-  id int(11) NOT NULL auto_increment,
-  PRIMARY KEY (id),
-  username VARCHAR(250) NOT NULL,
-  UNIQUE (username),
-  password VARCHAR(250) NOT NULL
-);
 
 CREATE TABLE comments (
   id int(11) NOT NULL auto_increment,

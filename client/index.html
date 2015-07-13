@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WesJS</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+  </head>
+  <body>
+    <div class="clearfix" id="app"></div>  
+    <script src="./mithril/mithril.js"></script>
+    <script src="posts.js"></script>
+    <script type="text/javascript">
+      m.mount(document.getElementById("app"), Posts)
+    </script>
+  </body>
+</html>
