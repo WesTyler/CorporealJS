@@ -46,6 +46,10 @@ Posts.controller = function () {
       ctrl.viewMode('summary');
       ctrl.add(posts.results[i]);
     }
+  };
+
+  ctrl.aboutMode = function() {
+    ctrl.viewMode('about');
   }
 }
 
@@ -60,8 +64,8 @@ Posts.view = function (ctrl) {
         m('a', {class: 'follow', id:  'linkedin', target:'_blank', href: 'https://www.linkedin.com/in/westyler405'}, 'linkedin')
       ]),
       m('ul', [
-        m('li', {onclick: ctrl.get}, [m('a',{class: 'navLink homeNav', href: '#'}, 'Home')]),
-        m('li', [m('a',{class: 'navLink aboutNav', href: '#'}, 'About')])
+        m('li', [m('a',{class: 'navLink homeNav', href: '#', onclick: ctrl.get}, 'Home')]),
+        m('li', [m('a',{class: 'navLink aboutNav', href: '#', onclick: ctrl.aboutMode}, 'About')])
         ]),
     ]),
     
@@ -71,19 +75,22 @@ Posts.view = function (ctrl) {
 
 function checkMode(ctrl) {
   if (ctrl.viewMode()==='summary') {
-    return summaryView(ctrl);
-  } else if (ctrl.viewMode()==='detail') {
-    // return m()
-  } else if (ctrl.viewMode()==='about') {
-    // return m()
-  };
-}
-
-function summaryView(ctrl) {
-  return m('div', {class: 'summaryView clearfix'}, ctrl.posts().map(function(post){
+    return m('div', {class: 'summaryView clearfix'}, ctrl.posts().map(function(post){
       return m('.postSummary', [
         m('h4',{class: 'title'}, post.title()),
         m('.summary', post.summary())
       ])
     }))
+  } else if (ctrl.viewMode()==='detail') {
+    // return m()
+  } else if (ctrl.viewMode()==='about') {
+    return m('div', {class: 'aboutView clearfix'}, [
+      m('h3', 'About Me',[
+        m('p', {class: 'about'}, "I'm a chemist-turned-web dev just trying to figure things out." )
+      ]),
+      m('h3', 'About This Blog', [
+        m('p', {class: 'about'}, "This blog was built using Mithril, Node/Express, and MySQL.")
+      ]) 
+    ])
+  };
 }

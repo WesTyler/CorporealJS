@@ -34,6 +34,10 @@ a {
   font-size: 2em;
 }
 
+a:hover {
+  color: #44A6B9;
+}
+
 .social {
   display: block;
   margin-left: 80%;
@@ -79,7 +83,7 @@ a {
   margin: 5px;
 }
 
-.postSummary:hover {
+.postSummary:hover, #twitter:hover, #github:hover, #linkedin:hover {
   box-shadow: 2px 5px 28px -1px rgba(183,173,188,0.48);
   cursor: pointer;
 }
@@ -94,6 +98,16 @@ a {
 
 .summary {
   padding: 10px;
+}
+
+.aboutView {
+  color: #205C7D;
+}
+
+.about {
+  color: #2C7998;
+  padding-left: 25px;
+  font-weight: normal;
 }
 
 .clearfix:after {
