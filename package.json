@@ -4,7 +4,7 @@
   "description": "Basic blog app built with Mithril, Express/Node, MySQL.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "author": "WesTyler <westyler5@gmail.com>",
   "repository" : { 
@@ -17,5 +17,8 @@
     "express": "^4.13.1",
     "mithril": "^0.2.0",
     "mysql": "^2.7.0"
-  }
+  },
+  "engines": {
+      "node": "0.12.5"
+    }
 }
