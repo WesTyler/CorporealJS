@@ -50,6 +50,10 @@ Posts.controller = function () {
 
   ctrl.aboutMode = function() {
     ctrl.viewMode('about');
+  };
+
+  ctrl.detailMode = function() {
+    console.log(this.id)
   }
 }
 
@@ -76,7 +80,7 @@ Posts.view = function (ctrl) {
 function checkMode(ctrl) {
   if (ctrl.viewMode()==='summary') {
     return m('div', {class: 'summaryView clearfix'}, ctrl.posts().map(function(post){
-      return m('.postSummary', [
+      return m('.postSummary', {id: post.id(), onclick: ctrl.detailMode}, [
         m('h4',{class: 'title'}, post.title()),
         m('.summary', post.summary())
       ])
