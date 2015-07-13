@@ -1,13 +1,14 @@
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
-var adminPass = require('./config.js');
+var credentials = require('./config.js');
 
 var utils = module.exports = {};
 
 var dbConnection = mysql.createConnection({
-  user: "admin",
-  password: adminPass,
-  database: "blog",
+  host: credentials.host,
+  user: credentials.user,
+  password: credentials.pass,
+  database: credentials.database
 });
 
 dbConnection.connect();

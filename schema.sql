@@ -1,4 +1,5 @@
-USE blog;
+
+USE heroku_d758e10738131e0;
 
 CREATE TABLE users (
   id int(11) NOT NULL auto_increment,
