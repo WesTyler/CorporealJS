@@ -117,7 +117,7 @@ function checkMode(ctrl) {
         m('p.about', "This blog was built using Mithril, Node/Express, and MySQL.")
       ]) 
     ])
-  } else {
+  } else { // On initial page load, default to show summary view and make initial GET request
     ctrl.viewMode('summary');
     ctrl.get();
   }
