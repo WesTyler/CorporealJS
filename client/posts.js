@@ -1,6 +1,7 @@
 var Posts = {};
 
 Posts.model = function () {
+  this.id = m.prop('');
   this.title = m.prop('');
   this.content = m.prop('');
   this.summary = m.prop('');
@@ -16,13 +17,14 @@ Posts.controller = function () {
     //check ctrl.posts to see if the post is already in posts
     var alreadySeen=false;
     for (var i=0; i<ctrl.posts().length; i++) {
-      if (postObj['title'] === ctrl.posts()[i].title()) {
+      if (postObj['id'] === ctrl.posts()[i].id()) {
         alreadySeen = true;
       }
     }
     if (!alreadySeen){
       var newPost = new Posts.model(); //makes new empty model
-      newPost.title(postObj['title']); //use model m.prop to set values
+      newPost.id(postObj['id']); //use model m.prop to set values
+      newPost.title(postObj['title']);
       newPost.content(postObj['content']);
       newPost.summary(postObj['summary']);
       newPost.author(postObj['username']);
@@ -80,8 +82,8 @@ function checkMode(ctrl) {
 function summaryView(ctrl) {
   return m('div', {class: 'summaryView clearfix'}, ctrl.posts().map(function(post){
       return m('.postSummary', [
-        m('.title', post.title),
-        m('.summary', post.summary)
+        m('h4',{class: 'title'}, post.title()),
+        m('.summary', post.summary())
       ])
     }))
 }

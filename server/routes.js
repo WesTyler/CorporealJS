@@ -3,9 +3,7 @@ var routes = module.exports = function(req, res) {
 
   var actions = {
     GET : function(req, res) {
-      console.log('calling utils query')
       utils.getPosts(function(results){
-        console.log('sending response after query', results)
         res.send(results)
       }); //Send back results of DB query
     },

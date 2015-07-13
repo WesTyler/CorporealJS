@@ -64,6 +64,31 @@ a {
   font-size: 0em;
 }
 
+.summaryView {
+  margin: 10px;
+  padding: 10px;
+}
+
+.postSummary {
+  color: #205C7D;
+  padding: 5px;
+  border: 1px solid #2C7998;
+  border-radius: 5px;
+  width: 33%;
+}
+
+.title {
+  padding: 5px;
+  text-align: center;
+  width: 85%;
+  margin: auto;
+  border-bottom: 1px solid #2C7998;
+}
+
+.summary {
+  padding: 10px;
+}
+
 .clearfix:after {
   visibility: hidden;
   display: block;

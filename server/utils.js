@@ -13,9 +13,8 @@ var dbConnection = mysql.createConnection({
 dbConnection.connect();
 
 utils.getPosts = function(cb){
-  console.log('Querying DB from utils.js')
  dbConnection.query("SELECT \
-  p.title, u.username, p.summary, p.content \
+  p.id, p.title, u.username, p.summary, p.content \
   FROM posts p \
   INNER JOIN users u ON p.user_id = u.id;", 
   function(err, results){
@@ -25,6 +24,7 @@ utils.getPosts = function(cb){
 }
 // Send back
 /* {
+  id: ,
   title: , 
   author: ,
   shortSumm: ,
