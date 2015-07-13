@@ -12,6 +12,7 @@ Posts.controller = function () {
   var ctrl = this;
   ctrl.posts = m.prop([]); //initialize as empty array of posts
   ctrl.viewMode = m.prop('');
+  ctrl.selectedPost = m.prop(0);
 
   ctrl.add = function(postObj) {
     //check ctrl.posts to see if the post is already in posts
@@ -53,7 +54,8 @@ Posts.controller = function () {
   };
 
   ctrl.detailMode = function() {
-    console.log(this.id)
+    ctrl.selectedPost(this.id);
+    ctrl.viewMode('detail');
   }
 }
 
@@ -61,11 +63,11 @@ Posts.view = function (ctrl) {
   console.log('rendering view')
   return m('.app', [
     
-    m('nav', {class: 'clearfix'}, [
+    m('nav.clearfix', [
       m('.social', [
-        m('a', {class: 'follow', id: 'twitter', target:'_blank', href: 'https://twitter.com/westyler1'}, 'twitter'),
-        m('a', {class: 'follow', id: 'github', target:'_blank', href: 'https://github.com/WesTyler'}, 'github'),
-        m('a', {class: 'follow', id:  'linkedin', target:'_blank', href: 'https://www.linkedin.com/in/westyler405'}, 'linkedin')
+        m('a.follow', {id: 'twitter', target:'_blank', href: 'https://twitter.com/westyler1'}, 'twitter'),
+        m('a.follow', {id: 'github', target:'_blank', href: 'https://github.com/WesTyler'}, 'github'),
+        m('a.follow', {id:  'linkedin', target:'_blank', href: 'https://www.linkedin.com/in/westyler405'}, 'linkedin')
       ]),
       m('ul', [
         m('li', [m('a',{class: 'navLink homeNav', href: '#', onclick: ctrl.get}, 'Home')]),
@@ -81,19 +83,23 @@ function checkMode(ctrl) {
   if (ctrl.viewMode()==='summary') {
     return m('div', {class: 'summaryView clearfix'}, ctrl.posts().map(function(post){
       return m('.postSummary', {id: post.id(), onclick: ctrl.detailMode}, [
-        m('h4',{class: 'title'}, post.title()),
+        m('h4.title', post.title()),
         m('.summary', post.summary())
       ])
-    }))
+    }));
   } else if (ctrl.viewMode()==='detail') {
-    // return m()
+    return m('div', {class: 'detailView clearfix'}, [
+      m('h3.detail', ctrl.posts()[ctrl.selectedPost()-1].title()),
+      m('h5.author', ctrl.posts()[ctrl.selectedPost()-1].author()),
+      m('p.text', ctrl.posts()[ctrl.selectedPost()-1].content())
+    ]);
   } else if (ctrl.viewMode()==='about') {
     return m('div', {class: 'aboutView clearfix'}, [
       m('h3', 'About Me',[
-        m('p', {class: 'about'}, "I'm a chemist-turned-web dev just trying to figure things out." )
+        m('p.about', "I'm a chemist-turned-web dev just trying to figure things out." )
       ]),
       m('h3', 'About This Blog', [
-        m('p', {class: 'about'}, "This blog was built using Mithril, Node/Express, and MySQL.")
+        m('p.about', "This blog was built using Mithril, Node/Express, and MySQL.")
       ]) 
     ])
   };
