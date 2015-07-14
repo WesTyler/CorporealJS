@@ -32,8 +32,6 @@ Posts.controller = function () {
       newPost.author(postObj['username']);
       ctrl.posts().push(newPost); //add to array of posts
       ctrl.postIndices()[newPost.id()] = ctrl.posts().indexOf(newPost);
-      // console.log('Post #',newPost.id(),'added to posts at index',ctrl.posts().indexOf(newPost))
-      // console.log('Post #',newPost.id(),'found at index',ctrl.postIndices()[newPost.id()])
     };
   };
 
@@ -55,20 +53,17 @@ Posts.controller = function () {
 
   ctrl.detailMode = function() { //View the selected post's detail page
     ctrl.selectedPost(this.id);
-    // console.log('you clicked on post #',this.id,'which should be post index',ctrl.postIndices()[this.id])
     ctrl.viewMode('detail');
   };
 
   ctrl.loadPrev = function() { //View previous post
     var temp = ctrl.postIndices()[ctrl.selectedPost()];
-    console.log('currently on post at',temp,'should navigate to post at',temp-1)
     temp = temp-1;
     ctrl.selectedPost(ctrl.posts()[temp].id());
   };
 
   ctrl.loadNext = function() { //View next post
     var temp = ctrl.postIndices()[ctrl.selectedPost()];
-    console.log('currently on post at',temp,'should navigate to post at',temp+1)
     temp = temp+1;
     ctrl.selectedPost(ctrl.posts()[temp].id());
   };
@@ -102,15 +97,20 @@ function checkMode(ctrl) {
       ])
     }));
   } else if (ctrl.viewMode()==='detail') {
+    var thisIndex = ctrl.postIndices()[ctrl.selectedPost()];
     return m('div', {class: 'detailView clearfix'}, [
-      m('h3.detail', ctrl.posts()[ctrl.postIndices()[ctrl.selectedPost()]].title()),
-      m('h5.author', ctrl.posts()[ctrl.postIndices()[ctrl.selectedPost()]].author()),
-      m('p.text', ctrl.posts()[ctrl.postIndices()[ctrl.selectedPost()]].content()),
+      m('h3.detail', ctrl.posts()[thisIndex].title()),
+      m('h5.author', ctrl.posts()[thisIndex].author()),
+      m('p.text', ctrl.posts()[thisIndex].content()),
       function() {
-        if (ctrl.posts()[ctrl.postIndices()[ctrl.selectedPost()]-1]) {
+        var prevIndex = thisIndex - 1;
+        if (ctrl.posts()[prevIndex]) {
           return m('a.prev', {href: '#', onclick: ctrl.loadPrev}, 'Previous Post')
         };
-        if (ctrl.posts()[ctrl.postIndices()[ctrl.selectedPost()]+1]) {
+      }(),
+      function() {
+        var nextIndex = thisIndex + 1;
+        if (ctrl.posts()[nextIndex]) {
           return m('a.next', {href: '#', onclick: ctrl.loadNext}, 'Next Post')
         };        
       }()
@@ -121,7 +121,7 @@ function checkMode(ctrl) {
         m('p.about', "I'm a chemist-turned-web dev just trying to figure things out." )
       ]),
       m('h3', 'About This Blog', [
-        m('p.about', "This blog was built using Mithril, Node/Express, and MySQL.")
+        m('p.about', "This blog was built using Mithril, Node/Express, and PostgreSQL.")
       ]) 
     ])
   } else { // On initial page load, default to show summary view and make initial GET request
