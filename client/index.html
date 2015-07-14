@@ -10,9 +10,6 @@
     <script src="posts.js"></script>
     <script type="text/javascript">
       m.mount(document.getElementById("app"), Posts)
-      setInterval(function(){
-        m.request({method: 'GET', url: '/posts/keepalive'}).then(console.log('Keeping the DB alive'))
-      },30000)
     </script>
   </body>
 </html>

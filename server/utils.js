@@ -1,44 +1,47 @@
-var mysql = require('mysql');
+var pg = require('pg'); //Refactoring to Postgres
 var bodyParser = require('body-parser');
-var credentials = require('./config.js');
+var config = require('./config.js');
 
 var utils = module.exports = {};
 
-var dbConnection = mysql.createConnection({
-  host: credentials.host,
-  user: credentials.user,
-  password: credentials.pass,
-  database: credentials.database
-});
+//Using Postgres
 
+var dbConnection = new pg.Client(process.env.DATABASE_URL || config.credentials)
 dbConnection.connect();
 
 utils.getPosts = function(cb){
- dbConnection.query("SELECT \
+  dbConnection.query("SELECT \
   p.id, p.title, u.username, p.summary, p.content \
   FROM posts p \
   INNER JOIN users u ON p.user_id = u.id;", 
   function(err, results){
     if (err) {cb(404)}
-    else {cb({results: results});}
+    else {cb({results: results.rows});}
  });
+};
 
- utils.keepAlive = function(){
-  dbConnection.query("SELECT 1 FROM users;")
- }
-}
-// Send back
-/* {
-  id: ,
-  title: , 
-  author: ,
-  shortSumm: ,
-  content: ,
-  comments: [ //Add comments later.
-    {username: ,
-    title: ,
-    comment: 
-    },
-    {u,t,c}, ...
-  ]
-}*/
+
+//Using MySQL: 
+// var dbConnection = mysql.createConnection({
+//   host: credentials.host,
+//   user: credentials.user,
+//   password: credentials.pass,
+//   database: credentials.database
+// });
+
+// dbConnection.connect();
+
+// utils.getPosts = function(cb){
+//  dbConnection.query("SELECT \
+//   p.id, p.title, u.username, p.summary, p.content \
+//   FROM posts p \
+//   INNER JOIN users u ON p.user_id = u.id;", 
+//   function(err, results){
+//     if (err) {cb(404)}
+//     else {cb({results: results});}
+//  });
+
+//  utils.keepAlive = function(){
+//   dbConnection.query("SELECT 1 FROM users;")
+//  }
+// }

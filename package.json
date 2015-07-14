@@ -7,18 +7,19 @@
     "start": "node server.js"
   },
   "author": "WesTyler <westyler5@gmail.com>",
-  "repository" : { 
-    "type" : "git",
-    "url" : "https://github.com/WesTyler/CorporealJS.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WesTyler/CorporealJS.git"
   },
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.13.2",
     "express": "^4.13.1",
     "mithril": "^0.2.0",
-    "mysql": "^2.7.0"
+    "mysql": "^2.7.0",
+    "pg": "^4.4.0"
   },
   "engines": {
-      "node": "0.12.5"
-    }
+    "node": "0.12.5"
+  }
 }
