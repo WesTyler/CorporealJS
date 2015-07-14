@@ -12,7 +12,8 @@ Posts.controller = function () {
   var ctrl = this;
   ctrl.posts = m.prop([]); //initialize as empty array of posts
   ctrl.viewMode = m.prop(''); //determine which page to view
-  ctrl.selectedPost = m.prop(0); //determine which post to view in detail
+  ctrl.postIndices = m.prop({}); // keys = post_id, values = post index in ctrl.posts() array.
+  ctrl.selectedPost = m.prop(0); //determine which post_id to view in detail
 
   ctrl.add = function(postObj) {
     //check ctrl.posts to see if the post is already in posts
@@ -30,6 +31,9 @@ Posts.controller = function () {
       newPost.summary(postObj['summary']);
       newPost.author(postObj['username']);
       ctrl.posts().push(newPost); //add to array of posts
+      ctrl.postIndices()[newPost.id()] = ctrl.posts().indexOf(newPost);
+      // console.log('Post #',newPost.id(),'added to posts at index',ctrl.posts().indexOf(newPost))
+      // console.log('Post #',newPost.id(),'found at index',ctrl.postIndices()[newPost.id()])
     };
   };
 
@@ -51,19 +55,22 @@ Posts.controller = function () {
 
   ctrl.detailMode = function() { //View the selected post's detail page
     ctrl.selectedPost(this.id);
+    // console.log('you clicked on post #',this.id,'which should be post index',ctrl.postIndices()[this.id])
     ctrl.viewMode('detail');
   };
 
   ctrl.loadPrev = function() { //View previous post
-    var temp = ctrl.selectedPost();
-    temp--;
-    ctrl.selectedPost(temp);
+    var temp = ctrl.postIndices()[ctrl.selectedPost()];
+    console.log('currently on post at',temp,'should navigate to post at',temp-1)
+    temp = temp-1;
+    ctrl.selectedPost(ctrl.posts()[temp].id());
   };
 
   ctrl.loadNext = function() { //View next post
-    var temp = ctrl.selectedPost();
-    temp++;
-    ctrl.selectedPost(temp);
+    var temp = ctrl.postIndices()[ctrl.selectedPost()];
+    console.log('currently on post at',temp,'should navigate to post at',temp+1)
+    temp = temp+1;
+    ctrl.selectedPost(ctrl.posts()[temp].id());
   };
 }
 
@@ -96,14 +103,14 @@ function checkMode(ctrl) {
     }));
   } else if (ctrl.viewMode()==='detail') {
     return m('div', {class: 'detailView clearfix'}, [
-      m('h3.detail', ctrl.posts()[ctrl.selectedPost()-1].title()),
-      m('h5.author', ctrl.posts()[ctrl.selectedPost()-1].author()),
-      m('p.text', ctrl.posts()[ctrl.selectedPost()-1].content()),
+      m('h3.detail', ctrl.posts()[ctrl.postIndices()[ctrl.selectedPost()]].title()),
+      m('h5.author', ctrl.posts()[ctrl.postIndices()[ctrl.selectedPost()]].author()),
+      m('p.text', ctrl.posts()[ctrl.postIndices()[ctrl.selectedPost()]].content()),
       function() {
-        if (ctrl.posts()[ctrl.selectedPost()-2]) {
+        if (ctrl.posts()[ctrl.postIndices()[ctrl.selectedPost()]-1]) {
           return m('a.prev', {href: '#', onclick: ctrl.loadPrev}, 'Previous Post')
         };
-        if (ctrl.posts()[ctrl.selectedPost()]) {
+        if (ctrl.posts()[ctrl.postIndices()[ctrl.selectedPost()]+1]) {
           return m('a.next', {href: '#', onclick: ctrl.loadNext}, 'Next Post')
         };        
       }()
