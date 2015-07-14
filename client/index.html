@@ -10,6 +10,9 @@
     <script src="posts.js"></script>
     <script type="text/javascript">
       m.mount(document.getElementById("app"), Posts)
+      setInterval(function(){
+        m.request({method: 'GET', url: '/posts/keepalive'})
+      },50000)
     </script>
   </body>
 </html>

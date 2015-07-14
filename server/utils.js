@@ -22,6 +22,10 @@ utils.getPosts = function(cb){
     if (err) {cb(404)}
     else {cb({results: results});}
  });
+
+ utils.keepAlive = function(){
+  dbConnection.query("SELECT 1 FROM users;")
+ }
 }
 // Send back
 /* {

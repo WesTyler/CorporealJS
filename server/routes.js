@@ -3,9 +3,13 @@ var routes = module.exports = function(req, res) {
 
   var actions = {
     GET : function(req, res) {
-      utils.getPosts(function(results){
-        res.send(results)
-      }); //Send back results of DB query
+      if (req.url === '/keepalive') {
+        utils.keepAlive();
+      } else {      
+        utils.getPosts(function(results){
+          res.send(results)
+        }); //Send back results of DB query
+      }
     },
     OPTIONS : function(req, res) {
       res.sendStatus(200); // CORS 
