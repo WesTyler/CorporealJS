@@ -1,17 +1,15 @@
-/*1 [EDEFF1, 75C0CB, 348392, 33312F, 99672F, C7A048]*/
-/*2 Primary use [F7F4F1, F3E4DF, B7ADBC, 205C7D, 2C7998, 44A6B9]*/
-/*3 [CEDFE5, 5A8976, 263750, E57461, F7BFA6, FBE3DA]*/
-/*4 [EFF5F9, D1EAF0, B1D4E1, 343732, B27B6A, E0C2B6]*/
+/*[FDFDFC, F3E4DF, B7ADBC, 205C7D, 2C7998, 44A6B9]*/
 
 body {
   width: 1000px;
   margin: auto;
   font-family: sans-serif;
-  background-color: #F7F4F1;
+  background-color: #F9F7F5;
 }
 
-nav {
-  border-bottom: 2px solid #2C7998;
+nav, .contentHolder {
+  border: 2px solid #F7F4F1;
+  background-color: #FDFDFC;
 }
 
 ul {
@@ -30,12 +28,12 @@ li {
 
 a {
   text-decoration: none;
-  color: #205C7D;
-  font-size: 2em;
+  color: #799DB1;
+  font-size: 1.5em;
 }
 
 a:hover {
-  color: #44A6B9;
+  color: #638DA4;
 }
 
 .social {
@@ -76,11 +74,11 @@ a:hover {
 .postSummary {
   color: #205C7D;
   padding: 5px;
-  border: 1px solid #2C7998;
+/*  border: 1px solid #F7F4F1;
   border-radius: 2px;
-  width: 33%;
-  float: left;
-  margin: 5px;
+*/  width: 75%;
+  float: none;
+  margin: auto;
 }
 
 .postSummary:hover {
@@ -94,34 +92,35 @@ a:hover {
 
 .title {
   padding: 5px;
-  text-align: center;
-  width: 85%;
   margin: auto;
-  border-bottom: 1px solid #2C7998;
+  font-size: 2em;
+  font-weight: normal;
+  border-bottom: 1px solid #F7F4F1;
 }
 
 .summary {
   padding: 10px;
 }
 
-.aboutView {
-  color: #205C7D;
+.aboutHeader {
+  font-size: 1.6em;
+  font-weight: normal;
+  border-bottom: 1px solid #F7F4F1;
 }
 
 .about {
-  color: #2C7998;
-  padding-left: 25px;
+  color: #205C7D;
+  font-size: 1em;
+  padding-left: 15px;
   font-weight: normal;
 }
 
-.detailView {
+.detailView, .aboutView {
   color: #205C7D;
-  width: 100%;
-  margin: 5px 5px 2px 0px;
+  width: 75%;
+  margin: auto;
   padding: 5px;
   padding-left: 0px;
-  border: 1px solid #2C7998;
-  border-radius: 2px;
 }
 
 .detail {
@@ -131,7 +130,7 @@ a:hover {
 .author {
   margin: 0px;
   padding: 5px;
-  color: #2C7998;
+  color: #799DB1;
 }
 
 .text {

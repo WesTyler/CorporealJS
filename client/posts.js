@@ -83,8 +83,10 @@ Posts.view = function (ctrl) {
         m('li', [m('a',{class: 'navLink aboutNav', href: '#', onclick: ctrl.aboutMode}, 'About')])
         ]),
     ]),
+    m('div', {class: 'contentHolder clearfix'}, [
+      checkMode(ctrl) //Check which body content type to display
+    ])
     
-    checkMode(ctrl) //Check which body content type to display
   ])
 }
 
@@ -99,7 +101,7 @@ function checkMode(ctrl) {
   } else if (ctrl.viewMode()==='detail') {
     var thisIndex = ctrl.postIndices()[ctrl.selectedPost()];
     return m('div', {class: 'detailView clearfix'}, [
-      m('h3.detail', ctrl.posts()[thisIndex].title()),
+      m('h3.title', ctrl.posts()[thisIndex].title()),
       m('h5.author', ctrl.posts()[thisIndex].author()),
       m('p.text', ctrl.posts()[thisIndex].content()),
       function() {
@@ -117,12 +119,10 @@ function checkMode(ctrl) {
     ]);
   } else if (ctrl.viewMode()==='about') {
     return m('div', {class: 'aboutView clearfix'}, [
-      m('h3', 'About Me',[
-        m('p.about', "I'm a chemist-turned-web dev just trying to figure things out." )
-      ]),
-      m('h3', 'About This Blog', [
-        m('p.about', "This blog was built using Mithril, Node/Express, and PostgreSQL.")
-      ]) 
+      m('h3.aboutHeader', 'About Me'),
+      m('p.about', "I'm a chemist-turned-web dev just trying to figure things out." ),
+      m('h3.aboutHeader', 'About This Blog'),
+      m('p.about', "This blog was built using Mithril, Node/Express, and PostgreSQL.")
     ])
   } else { // On initial page load, default to show summary view and make initial GET request
     ctrl.viewMode('summary');
