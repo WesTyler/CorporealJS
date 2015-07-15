@@ -74,11 +74,12 @@ a:hover {
 .postSummary {
   color: #205C7D;
   padding: 5px;
-/*  border: 1px solid #F7F4F1;
-  border-radius: 2px;
-*/  width: 75%;
+  border-bottom: 1px solid #C6C3C1;
+  /*border-radius: 2px;*/
+  width: 75%;
   float: none;
   margin: auto;
+  margin-top: 15px;
 }
 
 .postSummary:hover {
@@ -95,8 +96,8 @@ a:hover {
   margin: auto;
   font-size: 2em;
   font-weight: normal;
-  border-bottom: 1px solid #F7F4F1;
-}
+/*  border-bottom: 1px solid #F7F4F1;
+*/}
 
 .summary {
   padding: 10px;
