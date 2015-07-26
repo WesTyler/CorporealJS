@@ -72,7 +72,7 @@ a:hover {
 }
 
 .postSummary {
-  color: #205C7D;
+  color: #000000;
   padding: 5px;
   border-bottom: 1px solid #C6C3C1;
   /*border-radius: 2px;*/
@@ -110,14 +110,14 @@ a:hover {
 }
 
 .about {
-  color: #205C7D;
+  color: #000000;
   font-size: 1em;
   padding-left: 15px;
   font-weight: normal;
 }
 
 .detailView, .aboutView {
-  color: #205C7D;
+  color: #000000;
   width: 75%;
   margin: auto;
   padding: 5px;
@@ -131,7 +131,7 @@ a:hover {
 .author {
   margin: 0px;
   padding: 5px;
-  color: #000000;
+  color: #333333;
 }
 
 .text {
