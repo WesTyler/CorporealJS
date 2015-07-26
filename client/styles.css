@@ -8,7 +8,7 @@ body {
 }
 
 nav, .contentHolder {
-  border: 2px solid #D4D4D4;
+  border: 1px solid #D4D4D4;
   background-color: #FFFFFF;
 }
 
@@ -28,12 +28,12 @@ li {
 
 a {
   text-decoration: none;
-  color: #799DB1;
+  color: #000000;
   font-size: 1.5em;
 }
 
 a:hover {
-  color: #638DA4;
+  color: #5F2222;
 }
 
 .social {
@@ -57,7 +57,7 @@ a:hover {
 }
 
 .follow {
-  background-color: #205C7D;
+  background-color: #EDEDED;
   width: 40px;
   height: 40px;
   border-radius: 40px;
@@ -131,7 +131,7 @@ a:hover {
 .author {
   margin: 0px;
   padding: 5px;
-  color: #799DB1;
+  color: #000000;
 }
 
 .text {
