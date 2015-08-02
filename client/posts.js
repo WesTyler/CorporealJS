@@ -95,7 +95,7 @@ function checkMode(ctrl) {
     return m('div', {class: 'summaryView clearfix'}, ctrl.posts().map(function(post){
       return m('.postSummary', {id: post.id(), onclick: ctrl.detailMode}, [
         m('h4.title', post.title()),
-        m('.summary', post.summary())
+        m('.summary', m.trust(post.summary()))
       ])
     }));
   } else if (ctrl.viewMode()==='detail') {
@@ -103,7 +103,7 @@ function checkMode(ctrl) {
     return m('div', {class: 'detailView clearfix'}, [
       m('h3.title', ctrl.posts()[thisIndex].title()),
       m('h5.author', ctrl.posts()[thisIndex].author()),
-      m('p.text', ctrl.posts()[thisIndex].content()),
+      m('div.text', m.trust(markdown.toHTML(ctrl.posts()[thisIndex].content()))),
       function() {
         var prevIndex = thisIndex - 1;
         if (ctrl.posts()[prevIndex]) {

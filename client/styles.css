@@ -36,6 +36,12 @@ a:hover {
   color: #5F2222;
 }
 
+code, pre {
+  background-color: #DDDDDD;
+  padding: 1px;
+  word-wrap: break-word;
+}
+
 .social {
   display: block;
   margin-left: 80%;
