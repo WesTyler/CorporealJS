@@ -81,7 +81,7 @@ Posts.view = function (ctrl) {
         m('.social', [
           m('a.follow', {id: 'twitter', target:'_blank', href: 'https://twitter.com/westyler1'}, 'twitter'),
           m('a.follow', {id: 'github', target:'_blank', href: 'https://github.com/WesTyler'}, 'github'),
-          m('a.follow', {id:  'linkedin', target:'_blank', href: 'https://www.linkedin.com/in/westyler405'}, 'linkedin')
+          m('a.follow', {id:  'linkedin', target:'_blank', href: 'https://www.linkedin.com/in/westyler1'}, 'linkedin')
         ]),
       ]),
       m('ul', [
