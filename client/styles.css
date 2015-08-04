@@ -17,6 +17,7 @@ ul {
   padding-left: 0px;
   text-align: center;
   display: block;
+  margin-top: 0;
 }
 
 li { 
@@ -26,7 +27,7 @@ li {
   padding: 5px;
 }
 
-a {
+.navLink {
   text-decoration: none;
   color: #000000;
   font-size: 1.5em;
@@ -42,9 +43,33 @@ code, pre {
   word-wrap: break-word;
 }
 
+.heading {
+ display: block;
+}
+
+.logo {
+  font-family: 'Wire One', sans-serif;
+  float: left;
+  margin-left: 10px;
+}
+
+.logoMain {
+  float: left;
+  font-size: 5em;  
+  font-weight: bold;
+}
+.logoSub {
+  float: left;
+  /*font-family: 'NTR', sans-serif;*/
+  font-size: 3em;  
+  font-weight: bold;
+  color: #5F2222;
+}
+
 .social {
   display: block;
   margin-left: 80%;
+  margin-top: 10px;
 }
 
 #twitter {

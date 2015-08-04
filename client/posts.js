@@ -73,10 +73,16 @@ Posts.view = function (ctrl) {
   return m('.app', [
     
     m('nav.clearfix', [ //Nav bar and my social media links
-      m('.social', [
-        m('a.follow', {id: 'twitter', target:'_blank', href: 'https://twitter.com/westyler1'}, 'twitter'),
-        m('a.follow', {id: 'github', target:'_blank', href: 'https://github.com/WesTyler'}, 'github'),
-        m('a.follow', {id:  'linkedin', target:'_blank', href: 'https://www.linkedin.com/in/westyler405'}, 'linkedin')
+      m('.heading', {class: 'clearfix'}, [
+        m('.logo', [
+          m('.logoMain', 'Corporeal'),
+          m('.logoSub', 'JS')
+        ]),
+        m('.social', [
+          m('a.follow', {id: 'twitter', target:'_blank', href: 'https://twitter.com/westyler1'}, 'twitter'),
+          m('a.follow', {id: 'github', target:'_blank', href: 'https://github.com/WesTyler'}, 'github'),
+          m('a.follow', {id:  'linkedin', target:'_blank', href: 'https://www.linkedin.com/in/westyler405'}, 'linkedin')
+        ]),
       ]),
       m('ul', [
         m('li', [m('a',{class: 'navLink homeNav', href: '#', onclick: ctrl.get}, 'Home')]),
