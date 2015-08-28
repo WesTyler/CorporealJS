@@ -24,8 +24,8 @@ Corporeal.view = function(ctrl) {
         ]),
       ]),
       m('ul', [
-        m('li', [m('a',{class: 'navLink homeNav', href: '/', onclick: ctrl.get}, 'Home')]),
-        m('li', [m('a',{class: 'navLink aboutNav', href: '#/about', onclick: ctrl.aboutMode}, 'About')])
+        m('li', [m('a',{class: 'navLink homeNav', href: '/'}, 'Home')]),
+        m('li', [m('a',{class: 'navLink aboutNav', href: '#/about'}, 'About')])
         ]),
     ])
   ])
