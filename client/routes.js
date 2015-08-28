@@ -25,19 +25,16 @@ Corporeal.view = function(ctrl) {
       ]),
       m('ul', [
         m('li', [m('a',{class: 'navLink homeNav', href: '/', onclick: ctrl.get}, 'Home')]),
-        m('li', [m('a',{class: 'navLink aboutNav', href: '/about', onclick: ctrl.aboutMode}, 'About')])
+        m('li', [m('a',{class: 'navLink aboutNav', href: '#/about', onclick: ctrl.aboutMode}, 'About')])
         ]),
-    ]),
-    // Div to load sub-views into.
-    m('div', {class: 'contentHolder clearfix'})
-    
+    ])
   ])
 }
 
 m.route.mode = "hash";
 
-m.route(document.getElementById('app'), "/", {
-    "/": Corporeal,
+m.route(document.getElementById('content-holder'), "/", {
+    "/": Home,
     "/details": Details,
     "/about": About
 })
