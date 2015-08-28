@@ -41,7 +41,7 @@ Posts.controller = function () {
   };
 
   ctrl.postBuilder = function(posts){ //Iterate over server response to add new posts to the page
-    for (var i=0; i<posts.results.length; i++) {
+    for (var i=posts.results.length-1; i>=0; i--) {
       ctrl.viewMode('summary');
       ctrl.add(posts.results[i]);
     }
