@@ -42,7 +42,7 @@ Home.controller = function(){
 
 Home.view = function(ctrl){
   return m('div', {class: 'summaryView clearfix'}, ctrl.posts().map(function(post){
-    return m('.postSummary', {id: post.id(), onclick: ctrl.detailMode}, [
+    return m('.postSummary', {id: post.id(), onclick: function(){console.log(this.id); m.route('/details/:'+this.id)}}, [
       m('h4.title', post.title()),
       m('.summary', m.trust(post.summary()))
     ])

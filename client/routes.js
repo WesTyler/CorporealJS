@@ -35,6 +35,6 @@ m.route.mode = "hash";
 
 m.route(document.getElementById('content-holder'), "/", {
     "/": Home,
-    "/details": Details,
+    "/details/:postID": Details,
     "/about": About
 })
