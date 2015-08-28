@@ -5,7 +5,11 @@ var routes = module.exports = function(req, res) {
     GET : function(req, res) {
       if (req.url === '/keepalive') {
         utils.keepAlive();
-      } else {      
+      } else if (req.url.substr(2).length > 0){
+        utils.getSinglePost(req.url.substr(2), function(results){
+          res.send(results.results[0])
+        })
+      }else{      
         utils.getPosts(function(results){
           res.send(results)
         }); //Send back results of DB query

@@ -20,6 +20,17 @@ utils.getPosts = function(cb){
  });
 };
 
+utils.getSinglePost = function(postID, cb){
+  dbConnection.query("SELECT \
+  p.id, p.title, u.username, p.summary, p.content \
+  FROM posts p \
+  INNER JOIN users u ON p.user_id = u.id WHERE p.id=$1;",[''+postID], 
+  function(err, results){
+    if (err) {cb(404)}
+    else {cb({results: results.rows});}
+  });
+}
+
 
 //Using MySQL: 
 // var dbConnection = mysql.createConnection({

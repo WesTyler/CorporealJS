@@ -8,10 +8,15 @@
   </head>
   <body>
     <div class="clearfix" id="app"></div>  
+    <div class="contentHolder clearfix" id="content-holder"></div>  
     <script src="./mithril/mithril.js"></script>
-    <script src="posts.js"></script>
+    <script src="models/posts.js"></script>
+    <script src="components/home.js"></script>
+    <script src="components/details.js"></script>
+    <script src="components/about.js"></script>
+    <script src="routes.js"></script>
     <script type="text/javascript">
-      m.mount(document.getElementById("app"), Posts)
+      m.mount(document.getElementById("app"), Corporeal)
     </script>
   </body>
 </html>
