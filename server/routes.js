@@ -6,9 +6,7 @@ var routes = module.exports = function(req, res) {
       if (req.url === '/keepalive') {
         utils.keepAlive();
       } else if (req.url.substr(2).length > 0){
-        console.log('Looking for post #', req.url.substr(2))
         utils.getSinglePost(req.url.substr(2), function(results){
-          console.log('Found', results.results[0])
           res.send(results.results[0])
         })
       }else{      
